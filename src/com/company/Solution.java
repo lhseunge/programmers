@@ -7,18 +7,20 @@ import java.util.List;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(new String[]{"We", "are", "the", "world!"})));
+        System.out.println(new Solution().solution(new int[]{1,2}));
     }
 
-    public int[] solution(String[] strlist) {
+    public int solution(int[] dot) {
 
-        List<Integer> answers = new ArrayList<>();
-
-        for (String s : strlist) {
-            answers.add(s.length());
+        if (dot[0] > 0 && dot[1] > 0) {
+            return 1;
+        } else if (dot[0] < 0 && dot[1] > 0) {
+            return 2;
+        } else if (dot[0] < 0 && dot[1] < 0) {
+            return 3;
+        } else if (dot[0] > 0 && dot[1] < 0) {
+            return 4;
         }
-
-        int[] answer = answers.stream().mapToInt(x->x).toArray();
-        return answer;
+        return 0;
     }
 }
