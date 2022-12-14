@@ -7,17 +7,13 @@ import java.util.List;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("jaron"));
+        System.out.println(new Solution().solution(7, 10));
     }
 
-    public String solution(String my_string) {
+    public int solution(int slice, int n) {
 
-        StringBuilder temp = new StringBuilder();
+        double pizza = (double) n / slice;
 
-        for (int i = my_string.length() - 1; i >= 0; i--) {
-            temp.append(my_string.charAt(i));
-        }
-
-        return temp.toString();
+        return (int) Math.ceil(pizza);
     }
 }
