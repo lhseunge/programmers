@@ -8,10 +8,19 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("i love you~"));
+        System.out.println(new Solution().solution("hello", 3));
     }
 
-    public int solution(String message) {
-        return message.length() * 2;
+    public String solution(String my_string, int n) {
+
+        char[] temp = my_string.toCharArray();
+
+        StringBuilder answerBuilder = new StringBuilder();
+
+        for(char c : temp) {
+            answerBuilder.append(String.valueOf(c).repeat(n));
+        }
+
+        return answerBuilder.toString();
     }
 }
