@@ -8,18 +8,16 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(new int[]{1, 3, 5}, 1, 2)));
+        System.out.println(Arrays.toString(new Solution().solution(15000)));
     }
 
-    public int[] solution(int[] numbers, int num1, int num2) {
+    public int[] solution(int money) {
 
-        List<Integer> answerList = new ArrayList<>();
+        int coffePrice = 5500;
+        int cupOfCoffee = money / coffePrice;
 
-        for (int i = num1; i <= num2; i ++) {
-            answerList.add(numbers[i]);
-        }
+        int exchange = money - cupOfCoffee * coffePrice;
 
-        int[] answer = answerList.stream().mapToInt(x->x).toArray();
-        return answer;
+        return new int[]{cupOfCoffee, exchange};
     }
 }
