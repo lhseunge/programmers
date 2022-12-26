@@ -9,17 +9,24 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[]{1, 2, 3}));
+        System.out.println(new Solution().solution("205"));
     }
 
-    public int solution(int[] sides) {
+    public String solution(String rsp) {
 
-        Arrays.sort(sides);
+        String answer = "";
+        StringBuilder answerBuilder = new StringBuilder(answer);
 
-        if(sides[0] + sides[1] > sides[2]) {
-            return 1;
-        } else {
-            return 2;
-        }
+        String[] reqArray = rsp.split("");
+
+        Arrays.stream(reqArray).forEach(x-> {
+                if (x.equalsIgnoreCase("2")) answerBuilder.append("0");
+                if (x.equalsIgnoreCase("0")) answerBuilder.append("5");
+                if (x.equalsIgnoreCase("5")) answerBuilder.append("2");
+        });
+
+        answer = answerBuilder.toString();
+
+        return answer;
     }
 }
