@@ -30,7 +30,7 @@ public class Solution {
 
             scoreArray[i] = (float) (score[i][0] + score[i][1]) / 2;
         }
-        System.out.println(Arrays.toString(scoreArray));
+
         int[] rankArray = new int[score.length];
 
         for(int i = 0; i < scoreArray.length; i++) {
