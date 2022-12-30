@@ -8,25 +8,41 @@ import java.util.stream.Collectors;
 
 public class Solution {
 
+    /**
+     * 영어 점수와 수학 점수의 평균 점수를 기준으로 학생들의 등수를 매기려고 합니다.
+     * 영어 점수와 수학 점수를 담은 2차원 정수 배열 score가 주어질 때, 영어 점수와 수학 점수의 평균을 기준으로 매긴 등수를 담은 배열을 return하도록 solution 함수를 완성해주세요.
+     *
+     * 제한사항
+     * 0 ≤ score[0], score[1] ≤ 100
+     * 1 ≤ score의 길이 ≤ 10
+     * score의 원소 길이는 2입니다.
+     * score는 중복된 원소를 갖지 않습니다.
+     */
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("205"));
+        System.out.println(Arrays.toString(new Solution().solution(new int[][]{{1,2}, {1,1}, {1,1}, {1,1}})));
     }
 
-    public String solution(String rsp) {
+    public int[] solution(int[][] score) {
 
-        String answer = "";
-        StringBuilder answerBuilder = new StringBuilder(answer);
+        float[] scoreArray = new float[score.length];
 
-        String[] reqArray = rsp.split("");
+        for (int i = 0; i < score.length; i++) {
 
-        Arrays.stream(reqArray).forEach(x-> {
-                if (x.equalsIgnoreCase("2")) answerBuilder.append("0");
-                if (x.equalsIgnoreCase("0")) answerBuilder.append("5");
-                if (x.equalsIgnoreCase("5")) answerBuilder.append("2");
-        });
+            scoreArray[i] = (float) (score[i][0] + score[i][1]) / 2;
+        }
+        System.out.println(Arrays.toString(scoreArray));
+        int[] rankArray = new int[score.length];
 
-        answer = answerBuilder.toString();
+        for(int i = 0; i < scoreArray.length; i++) {
+            rankArray[i] = 1;
+            for(int j = 0; j < scoreArray.length; j++) {
+                if(scoreArray[i] < scoreArray[j]) {
+                    rankArray[i]++;
+                }
+            }
+        }
 
+        int[] answer = rankArray;
         return answer;
     }
 }
