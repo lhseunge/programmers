@@ -9,11 +9,18 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("BCBdbe", "B"));
+        System.out.println(new Solution().solution(150000));
     }
 
-    public String solution(String my_string, String letter) {
+    public int solution(int price) {
 
-        return my_string.replaceAll(letter,"");
+        if (price >= 100000 && price < 300000) {
+            return (int) (price - Math.floor(price * 0.05));
+        } else if (price >= 300000 && price < 500000) {
+            return (int) (price - Math.floor(price * 0.10));
+        } else if (price >= 500000) {
+            return (int) (price - Math.floor(price * 0.20));
+        }
+        return price;
     }
 }
