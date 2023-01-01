@@ -9,18 +9,22 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(150000));
+        System.out.println(new Solution().solution(new String[]{"a", "b", "c"}, new String[]{"com", "b", "d", "p", "c"}));
     }
 
-    public int solution(int price) {
+    public int solution(String[] s1, String[] s2) {
+        int answer = 0;
 
-        if (price >= 100000 && price < 300000) {
-            return (int) (price - Math.floor(price * 0.05));
-        } else if (price >= 300000 && price < 500000) {
-            return (int) (price - Math.floor(price * 0.10));
-        } else if (price >= 500000) {
-            return (int) (price - Math.floor(price * 0.20));
+        for (int i = 0; i < s1.length; i++) {
+            for (int j = 0; j < s2.length; j++) {
+
+                if (s1[i].equalsIgnoreCase(s2[j])) {
+                    answer++;
+                }
+
+            }
         }
-        return price;
+
+        return answer;
     }
 }
