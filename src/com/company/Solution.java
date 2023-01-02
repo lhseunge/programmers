@@ -9,21 +9,24 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new String[]{"a", "b", "c"}, new String[]{"com", "b", "d", "p", "c"}));
+        System.out.println(new Solution().solution("205"));
     }
 
-    public int solution(String[] s1, String[] s2) {
-        int answer = 0;
+    public String solution(String rsp) {
 
-        for (int i = 0; i < s1.length; i++) {
-            for (int j = 0; j < s2.length; j++) {
+        String answer = "";
+        StringBuilder answerBuilder = new StringBuilder(answer);
 
-                if (s1[i].equalsIgnoreCase(s2[j])) {
-                    answer++;
-                }
+        String[] reqArray = rsp.split("");
 
-            }
-        }
+        Arrays.stream(reqArray).forEach(x-> {
+            System.out.println("x = " + x);
+            if (x.equalsIgnoreCase("2")) answerBuilder.append("0");
+            if (x.equalsIgnoreCase("0")) answerBuilder.append("5");
+            if (x.equalsIgnoreCase("5")) answerBuilder.append("2");
+        });
+
+        answer = answerBuilder.toString();
 
         return answer;
     }
