@@ -9,20 +9,15 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(930211));
+        System.out.println(new Solution().solution(144));
     }
 
     public int solution(int n) {
 
-        int answer = 0;
-        String nToString = n+"";
-
-        char[] nToCharArray = nToString.toCharArray();
-
-        for (char c : nToCharArray) {
-            answer += Integer.parseInt(String.valueOf(c));
+        if (n % Math.sqrt(n) == 0) {
+            return 1;
         }
 
-        return answer;
+        return 2;
     }
 }
