@@ -12,12 +12,14 @@ public class Solution {
         System.out.println(new Solution().solution(144));
     }
 
-    public int solution(int n) {
+    public String solution(String my_string) {
 
-        if (n % Math.sqrt(n) == 0) {
-            return 1;
+        String[] vowel = {"a","e","i","o","u"};
+
+        for (String s : vowel) {
+            my_string = my_string.replaceAll(s, "");
         }
-
-        return 2;
+        
+        return my_string;
     }
 }
