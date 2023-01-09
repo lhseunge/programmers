@@ -9,17 +9,20 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(144));
+        System.out.println(new Solution().solution(20));
     }
 
-    public String solution(String my_string) {
+    public int solution(int n) {
 
-        String[] vowel = {"a","e","i","o","u"};
+        int answer = 0;
 
-        for (String s : vowel) {
-            my_string = my_string.replaceAll(s, "");
+        for (int i = 1; i <= n; i++) {
+            if(n % i == 0) {
+
+                answer++;
+            }
         }
-        
-        return my_string;
+
+        return answer;
     }
 }
