@@ -6,23 +6,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.util.Scanner;
+
 public class Solution {
-
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("cccCCC"));
-    }
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
 
-    public String solution(String my_string) {
-        String[] my_strings = my_string.split("");
+        StringBuilder starTree = new StringBuilder("*");
 
-        for(int i = 0; i < my_strings.length; i++) {
-            if(my_strings[i].matches("[A-Z]")) {
-                my_strings[i] = my_strings[i].toLowerCase();
-            } else if (my_strings[i].matches("[a-z]")) {
-                my_strings[i] = my_strings[i].toUpperCase();
-            }
+        for(int i = 0; i < n; i++) {
+            System.out.println(starTree);
+            starTree.append("*");
         }
-
-        return String.join("", my_strings);
     }
 }
