@@ -9,46 +9,13 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(999));
+        System.out.println(new Solution().solution("aAb1B2cC34oOp"));
     }
 
-    public int solution(int hp) {
+    public int solution(String my_string) {
 
-        int answer = 0;
-        int atkCnt = 0;
+        my_string = my_string.replaceAll("[A-Za-z]", "");
 
-        while(hp != 0) {
-            if (hp >= 5) {
-                atkCnt = atkGeneral(hp);
-                hp -= atkCnt * 5;
-                answer += atkCnt;
-                continue;
-            }
-            if (hp >= 3) {
-                atkCnt = atkSoldier(hp);
-                hp -= atkCnt * 3;
-                answer += atkCnt;
-                continue;
-            }
-            if (hp >= 1) {
-                hp = atkWorker(hp);
-                answer++;
-                continue;
-            }
-        }
-
-        return answer;
-    }
-
-    public int atkGeneral(int hp) {
-        return hp / 5;
-    }
-
-    public int atkSoldier(int hp) {
-        return hp / 3;
-    }
-
-    public int atkWorker(int hp) {
-        return hp - 1;
+        return Arrays.stream(my_string.split("")).mapToInt(Integer::parseInt).sum();
     }
 }
