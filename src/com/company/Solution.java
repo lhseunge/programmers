@@ -9,19 +9,20 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(3, new int[]{4, 5, 6, 7, 8, 9, 10, 11, 12})));
+        System.out.println(new Solution().solution("cccCCC"));
     }
 
-    public int[] solution(int n, int[] numlist) {
+    public String solution(String my_string) {
+        String[] my_strings = my_string.split("");
 
-        List<Integer> answer = new ArrayList<>();
-
-        for(int i : numlist) {
-            if (i % n == 0) {
-                answer.add(i);
+        for(int i = 0; i < my_strings.length; i++) {
+            if(my_strings[i].matches("[A-Z]")) {
+                my_strings[i] = my_strings[i].toLowerCase();
+            } else if (my_strings[i].matches("[a-z]")) {
+                my_strings[i] = my_strings[i].toUpperCase();
             }
         }
 
-        return answer.stream().mapToInt(x->x).toArray();
+        return String.join("", my_strings);
     }
 }
