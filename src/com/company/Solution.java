@@ -11,42 +11,19 @@ import java.util.Scanner;
 public class Solution {
     
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[]{1, 1}));
+        System.out.println(new Solution().solution("dfjardstddetckdaccccdegk", 4));
     }
 
-    public int solution(int[] array) {
+    public String solution(String cipher, int code) {
 
-        if (array.length == 1) {
-            return array[0];
-        }
+        StringBuilder sb = new StringBuilder();
 
-        HashMap<Integer, Integer> map = new HashMap<>();
-
-        int[] distinctArray = Arrays.stream(array).distinct().toArray();
-
-        for (int i : distinctArray) {
-            map.put(i, (int) Arrays.stream(array).filter(x-> x == i).count());
-
-        }
-
-        List<Map.Entry<Integer, Integer>> entryList = new ArrayList<>(map.entrySet());
-
-        entryList.sort(new Comparator<Map.Entry<Integer, Integer>>() {
-            @Override
-            public int compare(Map.Entry<Integer, Integer> o1, Map.Entry<Integer, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
+        for (int i = 1; i <= cipher.length(); i++) {
+            if (i % code == 0) {
+                sb.append(cipher.charAt(i - 1));
             }
-        });
-
-        if(entryList.size() == 1) {
-            return entryList.get(0).getKey();
         }
 
-        if(entryList.get(0).getValue() == entryList.get(1).getValue()) {
-            return -1;
-        }
-
-        return entryList.get(0).getKey();
-
+        return sb.toString();
     }
 }
