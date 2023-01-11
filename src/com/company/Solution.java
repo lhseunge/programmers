@@ -11,19 +11,15 @@ import java.util.Scanner;
 public class Solution {
     
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("dfjardstddetckdaccccdegk", 4));
+        System.out.println(new Solution().solution(new int[] {10, 8, 6}, 3));
     }
 
-    public String solution(String cipher, int code) {
+    public int solution(int[] box, int n) {
 
-        StringBuilder sb = new StringBuilder();
+        int x = box[0] / n;
+        int y = box[1] / n;
+        int z = box[2] / n;
 
-        for (int i = 1; i <= cipher.length(); i++) {
-            if (i % code == 0) {
-                sb.append(cipher.charAt(i - 1));
-            }
-        }
-
-        return sb.toString();
+        return x * y * z;
     }
 }
