@@ -11,23 +11,20 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(new int[]{9, 10, 11, 8})));
+        System.out.println(new Solution().solution(10));
     }
 
-    public int[] solution(int[] array) {
+    public int solution(int n) {
 
-        int max = Arrays.stream(array).max().getAsInt();
+        int piece = 6;
+        int pizza = 1;
 
-        int idx = 0;
+        while ((pizza * piece) % n != 0) {
 
-        for (int i = 0 ; i < array.length; i++) {
-            if (max == array[i]) {
-                idx = i;
-                break;
-            }
-        };
-
-        return new int[]{max, idx};
+            pizza++;
+        }
+        
+        return pizza;
     }
 
 }
