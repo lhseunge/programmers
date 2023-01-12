@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 public class Solution {
-    
+
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[] {10, 8, 6}, 3));
+        System.out.println(Arrays.toString(new Solution().solution("hi12392")));
     }
 
-    public int solution(int[] box, int n) {
+    public int[] solution(String my_string) {
 
-        int x = box[0] / n;
-        int y = box[1] / n;
-        int z = box[2] / n;
+        my_string = my_string.replaceAll("[a-zA-Z]", "");
 
-        return x * y * z;
+        return Arrays.stream(my_string.split("")).mapToInt(Integer::parseInt).sorted().toArray();
     }
+
 }
