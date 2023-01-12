@@ -14,11 +14,20 @@ public class Solution {
         System.out.println(Arrays.toString(new Solution().solution("hi12392")));
     }
 
-    public int[] solution(String my_string) {
+    public int[] solution(int[] array) {
 
-        my_string = my_string.replaceAll("[a-zA-Z]", "");
+        int max = Arrays.stream(array).max().getAsInt();
 
-        return Arrays.stream(my_string.split("")).mapToInt(Integer::parseInt).sorted().toArray();
+        int idx = 0;
+
+        for (int i = 0 ; i < array.length; i++) {
+            if (max == array[i]) {
+                idx = i;
+                break;
+            }
+        };
+
+        return new int[]{max, idx};
     }
 
 }
