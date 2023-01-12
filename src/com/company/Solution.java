@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution("hi12392")));
+        System.out.println(Arrays.toString(new Solution().solution(new int[]{9, 10, 11, 8})));
     }
 
     public int[] solution(int[] array) {
