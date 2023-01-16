@@ -11,20 +11,18 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(10));
+        System.out.println(Arrays.toString(new Solution().solution(29)));
     }
 
-    public int solution(int n) {
+    public int[] solution(int n) {
 
-        int piece = 6;
-        int pizza = 1;
+        List<Integer> result = new ArrayList<>();
 
-        while ((pizza * piece) % n != 0) {
-
-            pizza++;
+        for (int i = 1; i <= n; i++ ) {
+            if(n % i == 0) result.add(i);
         }
-        
-        return pizza;
+
+        return result.stream().mapToInt(x->x).toArray();
     }
 
 }
