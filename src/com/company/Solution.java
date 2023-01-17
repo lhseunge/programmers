@@ -11,18 +11,19 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(29)));
+        System.out.println(new Solution().solution(new int[] {7, 77, 17}));
     }
 
-    public int[] solution(int n) {
+    public int solution(int[] array) {
 
-        List<Integer> result = new ArrayList<>();
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 1; i <= n; i++ ) {
-            if(n % i == 0) result.add(i);
+        for (int i : array) {
+            sb.append(i);
         }
 
-        return result.stream().mapToInt(x->x).toArray();
+        return (int) Arrays.stream(sb.toString().split("")).filter(x-> x.equalsIgnoreCase("7")).count();
+
     }
 
 }
