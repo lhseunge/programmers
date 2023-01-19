@@ -9,24 +9,21 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(2,1,20));
+        System.out.println(new Solution().solution(51));
     }
 
-    /**
-     * a : 콜라를 받으려면 마트에 줘야하는 병 수
-     * b : 빈 병 a개를 가져다 주면 마트가 주는 콜라 병 수
-     * c : 상빈이가 가지고 있는 빈 병의 수
-     */
-    public int solution(int a, int b, int n) {
+    public String solution(int age) {
 
-        List<Integer> calc = new ArrayList<>() ;
+        String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 
-        while (n >= a) {
-            calc.add(n);
-            n = n - a + b;
+        StringBuilder answerBuilder = new StringBuilder();
+
+        String[] ageArray = String.valueOf(age).split("");
+
+        for (String s : ageArray) {
+            answerBuilder.append(alphabet[Integer.parseInt(s)]);
         }
 
-        return calc.size() * b;
-
+        return answerBuilder.toString();
     }
 }
