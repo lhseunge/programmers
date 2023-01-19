@@ -6,6 +6,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import java.util.Scanner;
+
 public class Solution {
 
     public static void main(String[] args) {
