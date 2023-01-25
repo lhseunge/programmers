@@ -11,21 +11,25 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(51));
+        System.out.println(new Solution().solution(new int[] {-10, 20}));
     }
 
-    public String solution(int age) {
+    public int solution(int[] numbers) {
+        int answer = 0;
 
-        String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+        for (int i = 0; i < numbers.length; i++) {
 
-        StringBuilder answerBuilder = new StringBuilder();
+            for (int j = i + 1; j < numbers.length; j++) {
 
-        String[] ageArray = String.valueOf(age).split("");
+                answer = Math.max(answer, numbers[i] * numbers[j]);
+            }
 
-        for (String s : ageArray) {
-            answerBuilder.append(alphabet[Integer.parseInt(s)]);
         }
 
-        return answerBuilder.toString();
+        if (numbers.length == 2) {
+            answer = numbers[0] * numbers[1];
+        }
+
+        return answer;
     }
 }
