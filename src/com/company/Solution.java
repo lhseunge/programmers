@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 public class Solution {
+    
     public static void main(String[] args) {
         System.out.println(new Solution().solution(29183, 1));
     }
@@ -21,12 +22,6 @@ public class Solution {
         if (!String.valueOf(num).contains(StringK))
             return -1;
 
-        String[] numCharArray = String.valueOf(num).split("");
-
-        for (int i = 0; i < StringNum.length(); i++) {
-            if (numCharArray[i].equalsIgnoreCase(StringK)) return i + 1;
-        }
-
-        return 0;
+        return StringNum.indexOf(StringK) + 1;
     }
 }
