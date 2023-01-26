@@ -11,25 +11,20 @@ import java.util.Scanner;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[] {-10, 20}));
+        System.out.println(new Solution().solution("hello", 1, 2));
     }
 
-    public int solution(int[] numbers) {
-        int answer = 0;
+    public String solution(String my_string, int num1, int num2) {
 
-        for (int i = 0; i < numbers.length; i++) {
+        char originalNum1Char = my_string.charAt(num1);
+        char originalNum2Char = my_string.charAt(num2);
 
-            for (int j = i + 1; j < numbers.length; j++) {
+        String[] answerArray = my_string.split("");
 
-                answer = Math.max(answer, numbers[i] * numbers[j]);
-            }
+        answerArray[num1] = String.valueOf(originalNum2Char);
+        answerArray[num2] = String.valueOf(originalNum1Char);
 
-        }
+        return String.join("", answerArray);
 
-        if (numbers.length == 2) {
-            answer = numbers[0] * numbers[1];
-        }
-
-        return answer;
     }
 }
