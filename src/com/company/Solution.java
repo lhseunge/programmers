@@ -9,6 +9,9 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 public class Solution {
+    public static void main(String[] args) {
+        System.out.println(new Solution().solution(29183, 1));
+    }
 
     public int solution(int num, int k) {
 
