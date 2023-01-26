@@ -10,21 +10,20 @@ import java.util.Scanner;
 
 public class Solution {
 
-    public static void main(String[] args) {
-        System.out.println(new Solution().solution("hello", 1, 2));
-    }
+    public int solution(int num, int k) {
 
-    public String solution(String my_string, int num1, int num2) {
+        String StringNum = String.valueOf(num);
+        String StringK = String.valueOf(k);
 
-        char originalNum1Char = my_string.charAt(num1);
-        char originalNum2Char = my_string.charAt(num2);
+        if (!String.valueOf(num).contains(StringK))
+            return -1;
 
-        String[] answerArray = my_string.split("");
+        String[] numCharArray = String.valueOf(num).split("");
 
-        answerArray[num1] = String.valueOf(originalNum2Char);
-        answerArray[num2] = String.valueOf(originalNum1Char);
+        for (int i = 0; i < StringNum.length(); i++) {
+            if (numCharArray[i].equalsIgnoreCase(StringK)) return i + 1;
+        }
 
-        return String.join("", answerArray);
-
+        return 0;
     }
 }
