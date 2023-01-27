@@ -11,17 +11,14 @@ import java.util.Scanner;
 public class Solution {
     
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(29183, 1));
+        System.out.println(new Solution().solution(29423));
     }
 
-    public int solution(int num, int k) {
+    public int solution(int order) {
 
-        String StringNum = String.valueOf(num);
-        String StringK = String.valueOf(k);
+        return Arrays.stream(String.valueOf(order).split(""))
+                .filter(x -> x.equals("3") || x.equals("6") || x.equals("9"))
+                .collect(Collectors.joining()).length();
 
-        if (!String.valueOf(num).contains(StringK))
-            return -1;
-
-        return StringNum.indexOf(StringK) + 1;
     }
 }
