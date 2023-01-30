@@ -11,29 +11,24 @@ import java.util.Scanner;
 public class Solution {
     
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(new int[]{1,100,2,88,99})));
+        System.out.println(new Solution().solution(".... . .-.. .-.. ---"));
     }
 
-    public int[] solution(int[] emergency) {
+    public String solution(String letter) {
 
+        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-        int[] emergencyRank = new int[emergency.length];
-        int[] sortedEmergency = Arrays.stream(emergency).boxed().collect(Collectors.toList()).stream().sorted(Collections.reverseOrder()).mapToInt(x->x).toArray();
+        StringBuilder sb = new StringBuilder();
 
-        int rank = 1;
-
-        for (int i = 0; i < emergency.length; i++) {
-            for (int  j = 0; j < emergency.length; j++) {
-
-                if (sortedEmergency[i] == emergency[j]) {
-                    emergencyRank[j] = rank;
-                    rank++;
-                    break;
+        for (String l : letter.split(" ")) {
+            for (int i = 0; i < morse.length; i++) {
+                if (morse[i].equals(l)) {
+                    sb.append(alphabet[i]);
                 }
             }
-
         }
 
-        return emergencyRank;
+        return sb.toString();
     }
 }
