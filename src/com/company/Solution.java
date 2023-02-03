@@ -1,5 +1,6 @@
 package com.company;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -9,26 +10,30 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 public class Solution {
-    
+
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(".... . .-.. .-.. ---"));
+        System.out.println(new Solution().solution(5, 3));
     }
 
-    public String solution(String letter) {
+    public int solution(int balls, int share) {
 
-        String[] morse = {".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
-        char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        BigInteger n = new BigInteger(String.valueOf(fact(balls)));
+        BigInteger m = new BigInteger(String.valueOf(fact(share)));
+        BigInteger nm = new BigInteger(String.valueOf(fact(balls - share)));
 
-        StringBuilder sb = new StringBuilder();
+        BigInteger result = n.divide(nm.multiply(m));
 
-        for (String l : letter.split(" ")) {
-            for (int i = 0; i < morse.length; i++) {
-                if (morse[i].equals(l)) {
-                    sb.append(alphabet[i]);
-                }
-            }
+        return result.intValue();
+    }
+
+    public static BigInteger fact(int n) {
+
+        BigInteger result = new BigInteger("1");
+
+        for (int i = n; i >= 1; i--) {
+            result = result.multiply(new BigInteger(String.valueOf(i)));
         }
 
-        return sb.toString();
+        return new BigInteger(String.valueOf(result));
     }
 }
