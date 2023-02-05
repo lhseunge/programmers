@@ -1,39 +1,37 @@
 package com.company;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-
-import java.util.Scanner;
 
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(5, 3));
+        System.out.println(new Solution().solution("      3people         unFollowed me         "));
     }
 
-    public int solution(int balls, int share) {
+    public String solution(String s) {
 
-        BigInteger n = new BigInteger(String.valueOf(fact(balls)));
-        BigInteger m = new BigInteger(String.valueOf(fact(share)));
-        BigInteger nm = new BigInteger(String.valueOf(fact(balls - share)));
+        // request 문자열 소문자 화
+        s = s.toLowerCase();
 
-        BigInteger result = n.divide(nm.multiply(m));
+        // 문자열 첫 글자 대문자 화
+        String[] sArray = s.split("");
 
-        return result.intValue();
-    }
+        for (int i = 0; i < sArray.length; i++) {
 
-    public static BigInteger fact(int n) {
+            if (i == 0) {
+                    sArray[i] = sArray[i].toUpperCase();
+                    continue;
+            }
 
-        BigInteger result = new BigInteger("1");
-
-        for (int i = n; i >= 1; i--) {
-            result = result.multiply(new BigInteger(String.valueOf(i)));
+            if (!" ".equalsIgnoreCase(sArray[i])
+                && " ".equalsIgnoreCase(sArray[i - 1])
+            ) {
+                sArray[i] = sArray[i].toUpperCase();
+            }
         }
 
-        return new BigInteger(String.valueOf(result));
+        return String.join("", sArray);
     }
 }
