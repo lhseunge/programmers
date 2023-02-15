@@ -7,16 +7,30 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("Python"));
+        System.out.println(new Solution().solution(15));
     }
+    
+    public int solution(int n) {
 
-    public String solution(String my_string) {
-        my_string = my_string.toLowerCase();
+        Set<Integer> answer = new HashSet<>();
 
-        char[] cArray = my_string.toCharArray();
+        Set<Integer> numbers = new HashSet<>(); // 약수
 
-        Arrays.sort(cArray);
+        for (int i = 1; i <= n ; i++) {
 
-        return String.join("", String.valueOf(cArray));
+            for (int j = 1; j <= i; j++) {
+                if (i % j == 0) {
+                    numbers.add(j);
+                }
+            }
+
+            if (numbers.size() >= 3) {
+                answer.add(i);
+            }
+            numbers.clear();
+
+        }
+
+        return answer.size();
     }
 }
