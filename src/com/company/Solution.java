@@ -7,14 +7,26 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("allpe",	"apple"));
+        System.out.println(new Solution().solution(36281));
     }
 
-    public int solution(String before, String after) {
+    public int solution(int n) {
+        int answer = 0;
+        if(n == 1) return 1;
 
-        List<Integer> beforeList = before.chars().sorted().boxed().collect(Collectors.toList());
-        List<Integer> afterList = after.chars().sorted().boxed().collect(Collectors.toList());
+        int fact = 1;
 
-        return beforeList.equals(afterList) ? 1 : 0;
+        for (int i = 1; i <= 10; i++) {
+
+            fact *= i;
+
+            if (n == fact) return i;
+
+            if (n < fact) {
+                return i - 1;
+            }
+        }
+
+        return 10;
     }
 }
