@@ -7,11 +7,14 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("people"));
+        System.out.println(new Solution().solution("allpe",	"apple"));
     }
 
-    public String solution(String my_string) {
-       return Arrays.stream(my_string.split("")).distinct().collect(Collectors.joining());
+    public int solution(String before, String after) {
 
+        List<Integer> beforeList = before.chars().sorted().boxed().collect(Collectors.toList());
+        List<Integer> afterList = after.chars().sorted().boxed().collect(Collectors.toList());
+
+        return beforeList.equals(afterList) ? 1 : 0;
     }
 }
