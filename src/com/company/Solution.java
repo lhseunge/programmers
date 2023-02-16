@@ -7,21 +7,29 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.deepToString(new Solution().solution(new int[]{1, 2, 3, 4, 5, 6, 7, 8}, 2)));
+        System.out.println(new Solution().solution(new int[]{3, 10, 28}, 20));
     }
 
-    public int[][] solution(int[] num_list, int n) {
+    public int solution(int[] array, int n) {
 
-        int[][] answer = new int[num_list.length / n][n];
-        List<Integer> nums = Arrays.stream(num_list).boxed().collect(Collectors.toList());
+        Arrays.sort(array);
 
-        for (int j = 0; j < num_list.length / n; j++) {
-            for (int k = 0; k < n; k++) {
-                answer[j][k] = nums.get(0);
-                nums.remove(0);
+        if (n <= array[0]) return array[0];
+        if (n >= array[array.length - 1]) return array[array.length - 1];
+
+        for (int i = 0; i <= array.length - 1; i++) {
+
+            if (n == array[i]) return array[i];
+
+            if (n < array[i]) {
+                int a = array[i] - n;
+                int b = n - array[i - 1];
+
+                return a < b ? array[i] : array[i - 1];
+
             }
-        }
 
-        return answer;
+        }
+        return 0;
     }
 }
