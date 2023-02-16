@@ -7,29 +7,28 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[]{3, 10, 28}, 20));
+        System.out.println(new Solution().solution(1,13, 1));
     }
 
-    public int solution(int[] array, int n) {
+    /**
+     * i부터 j까지 k가 몇 번 등장하는지 return 하도록 solution 함수를 완성해주세요.
+     * @param i 시작 숫자
+     * @param j 끝 숫자
+     * @param k 타겟
+     * @return
+     */
+    public int solution(int i, int j, int k) {
 
-        Arrays.sort(array);
+        int answer = 0;
 
-        if (n <= array[0]) return array[0];
-        if (n >= array[array.length - 1]) return array[array.length - 1];
-
-        for (int i = 0; i <= array.length - 1; i++) {
-
-            if (n == array[i]) return array[i];
-
-            if (n < array[i]) {
-                int a = array[i] - n;
-                int b = n - array[i - 1];
-
-                return a < b ? array[i] : array[i - 1];
-
+        for (int idx = i; idx <= j; idx++) {
+            for (String s : String.valueOf(idx).split("")) {
+                if (s.equals(String.valueOf(k))) {
+                    answer++;
+                };
             }
-
         }
-        return 0;
+
+        return answer;
     }
 }
