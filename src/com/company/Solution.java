@@ -7,20 +7,21 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("helloo"));
+        System.out.println(new Solution().solution(new String[]{"p", "o", "s"},	new String[]{"sod", "eocd", "qixm", "adio", "soo", "sop"}));
     }
 
-    public String solution(String s) {
+    public int solution(String[] spell, String[] dic) {
 
-        String[] sArray = Arrays.stream(s.split("")).toArray(String[]::new);
+        String word = Arrays.stream(spell).sorted().collect(Collectors.joining());
 
-        for (String word : sArray) {
-            if (Arrays.stream(sArray).filter(x -> x.equals(word)).count() > 1L) {
-                s = s.replace(word, "");
+        for (int i = 0; i < dic.length; i++) {
+            dic[i] = Arrays.stream(dic[i].split("")).sorted().collect(Collectors.joining());
+
+            if (dic[i].equals(word)) {
+                return 1;
             }
         }
 
-        return Arrays.stream(s.split("")).sorted().collect(Collectors.joining());
-
+        return 2;
     }
 }
