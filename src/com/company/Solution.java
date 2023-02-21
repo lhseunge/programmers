@@ -7,13 +7,11 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("aAb1B2cC34oOp"));
+        System.out.println(new Solution().solution("1001","1111"));
     }
 
-    public int solution(String my_string) {
+    public String solution(String bin1, String bin2) {
 
-        my_string = my_string.replaceAll("[a-zA-Z]", " ").trim();
-
-        return Arrays.stream(my_string.split(" ")).filter(x-> !x.isEmpty()).mapToInt(Integer::parseInt).sum();
+        return Integer.toBinaryString(Integer.parseInt(bin1, 2) + Integer.parseInt(bin2, 2));
     }
 }
