@@ -7,21 +7,27 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution(new String[]{"p", "o", "s"},	new String[]{"sod", "eocd", "qixm", "adio", "soo", "sop"}));
+        System.out.println(new Solution().solution("onefourzerosixseven"));
     }
 
-    public int solution(String[] spell, String[] dic) {
+    public long solution(String numbers) {
 
-        String word = Arrays.stream(spell).sorted().collect(Collectors.joining());
+        List<String> nums = new ArrayList<>();
+        nums.add("zero");
+        nums.add("one");
+        nums.add("two");
+        nums.add("three");
+        nums.add("four");
+        nums.add("five");
+        nums.add("six");
+        nums.add("seven");
+        nums.add("eight");
+        nums.add("nine");
 
-        for (int i = 0; i < dic.length; i++) {
-            dic[i] = Arrays.stream(dic[i].split("")).sorted().collect(Collectors.joining());
-
-            if (dic[i].equals(word)) {
-                return 1;
-            }
+        for (int i = 0; i < nums.size(); i++) {
+            numbers = numbers.replace(nums.get(i), String.valueOf(i));
         }
 
-        return 2;
+        return Long.parseLong(numbers);
     }
 }
