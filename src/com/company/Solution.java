@@ -4,36 +4,59 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Solution {
-
-    public static void main(String[] args) {
-        System.out.println(new Solution().solution(new int[]{5, 5}));
+public static void main(String[] args) {
+        System.out.println(Arrays.toString(new Solution().solution(new String[]{"left", "left", "left", "left", "right", "right", "right", "right"}, new int[]{5, 5})));
     }
 
-    public int solution(int[] sides) {
+    public int[] solution(String[] keyinput, int[] board) {
 
-        Arrays.sort(sides);
+        int[] cordinate = {0,0};
 
-        int a = sides[1];
-        int b = sides[0];
+        if (Arrays.equals(board, new int[]{1, 1})) return cordinate;
 
-        // a가 제일 큰 케이스
-        int case1 = 0;
-        // c가 제일 큰 케이스
-        int case2 = 0;
+        int maxX = (board[0] - 1) / 2;
+        int maxY = (board[1] - 1) / 2;
 
-        // case1
-        // a between a-b and a - 1
-        for (int i = a - b; i < a; i++) {
-            case1++;
+        for (String s : keyinput) {
+            switch (s) {
+                case "left":
+                    cordinate[0] -= 1;
+                    setOverRangeCordinateToMaxCordinate(cordinate, maxX, maxY);
+                    break;
+                case "right":
+                    cordinate[0] += 1;
+                    setOverRangeCordinateToMaxCordinate(cordinate, maxX, maxY);
+                    break;
+                case "up":
+                    cordinate[1] += 1;
+                    setOverRangeCordinateToMaxCordinate(cordinate, maxX, maxY);
+                    break;
+                case "down":
+                    cordinate[1] -= 1;
+                    setOverRangeCordinateToMaxCordinate(cordinate, maxX, maxY);
+                    break;
+            }
         }
 
-        // case2
-        // c between a-b and a - 1
-        for (int i = a + 1; i <= a + b - 1; i++) {
-            case2++;
+        return cordinate;
+    }
+
+    private int[] setOverRangeCordinateToMaxCordinate(int[] cordinate, int maxX, int maxY) {
+
+        if (cordinate[0] > maxX) {
+            cordinate[0] = maxX;
+        } else if (cordinate[0] < maxX * -1) {
+            cordinate[0] = maxX * -1;
         }
 
-        return case1 + case2;
+        if (cordinate[1] < maxY * -1 ) {
+            cordinate[1] = maxY * -1;
+        }
+        else if (cordinate[1] > maxY) {
+            cordinate[1] = maxY;
+        }
+
+        return cordinate;
+
     }
 }
