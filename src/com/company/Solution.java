@@ -7,32 +7,24 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution("abc1Addfggg4556b", 6)));
+        System.out.println(new Solution().solution("10 Z 20 Z 1"));
     }
 
-    public String[] solution(String my_str, int n) {
+    public int solution(String s) {
 
-        List<String> result = new ArrayList<>();
-        String word = null;
-        int idx = 0;
-        int endIdx = n;
+        int answer = 0;
 
-        while (my_str.length() > n) {
+        String[] sArray = s.split(" ");
 
-            word = my_str.substring(idx, endIdx);
-            result.add(word);
-            idx += n;
-            endIdx += n;
-            if (endIdx > my_str.length()) {
-                break;
+        for (int i = 0; i < sArray.length; i++) {
+
+            if (sArray[i].equals("Z")) {
+                answer -= Integer.parseInt(sArray[i - 1]);
+            } else {
+                answer += Integer.parseInt(sArray[i]);
             }
-
         }
 
-        if (my_str.substring(idx).length() > 0) {
-            result.add(my_str.substring(idx));
-        }
-
-        return result.toArray(String[]::new);
+        return answer;
     }
 }
