@@ -7,21 +7,24 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("10 Z 20 Z 1"));
+        System.out.println(new Solution().solution("3 + 4 - 1"));
     }
 
-    public int solution(String s) {
-
+    public int solution(String my_string) {
         int answer = 0;
 
-        String[] sArray = s.split(" ");
+        String[] my_stringArray = my_string.split(" ");
 
-        for (int i = 0; i < sArray.length; i++) {
+        for (int i = 0; i < my_stringArray.length; i++) {
 
-            if (sArray[i].equals("Z")) {
-                answer -= Integer.parseInt(sArray[i - 1]);
+            if (my_stringArray[i].equals("+")) {
+                answer += Integer.parseInt(my_stringArray[i + 1]);
+                i++;
+            } else if (my_stringArray[i].equals("-")) {
+                answer -= Integer.parseInt(my_stringArray[i + 1]);
+                i++;
             } else {
-                answer += Integer.parseInt(sArray[i]);
+                answer += Integer.parseInt(my_stringArray[i]);
             }
         }
 
