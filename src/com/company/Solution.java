@@ -22,6 +22,7 @@ public class Solution {
                 i = 2;
                 continue;
             }
+            
             i++;
         }
 
