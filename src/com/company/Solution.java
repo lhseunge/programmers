@@ -7,27 +7,33 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("3 + 4 - 1"));
+        System.out.println(new Solution().solution(new int[]{5, 5}));
     }
 
-    public int solution(String my_string) {
-        int answer = 0;
+    public int solution(int[] sides) {
 
-        String[] my_stringArray = my_string.split(" ");
+        Arrays.sort(sides);
 
-        for (int i = 0; i < my_stringArray.length; i++) {
+        int a = sides[1];
+        int b = sides[0];
 
-            if (my_stringArray[i].equals("+")) {
-                answer += Integer.parseInt(my_stringArray[i + 1]);
-                i++;
-            } else if (my_stringArray[i].equals("-")) {
-                answer -= Integer.parseInt(my_stringArray[i + 1]);
-                i++;
-            } else {
-                answer += Integer.parseInt(my_stringArray[i]);
-            }
+        // a가 제일 큰 케이스
+        int case1 = 0;
+        // c가 제일 큰 케이스
+        int case2 = 0;
+
+        // case1
+        // a between a-b and a - 1
+        for (int i = a - b; i < a; i++) {
+            case1++;
         }
 
-        return answer;
+        // case2
+        // c between a-b and a - 1
+        for (int i = a + 1; i <= a + b - 1; i++) {
+            case2++;
+        }
+
+        return case1 + case2;
     }
 }
