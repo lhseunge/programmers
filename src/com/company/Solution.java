@@ -7,11 +7,24 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(new Solution().solution("1001","1111"));
+        System.out.println(Arrays.toString(new Solution().solution(12)));
     }
 
-    public String solution(String bin1, String bin2) {
+    public int[] solution(int n) {
 
-        return Integer.toBinaryString(Integer.parseInt(bin1, 2) + Integer.parseInt(bin2, 2));
+        List<Integer> result = new ArrayList<>();
+
+        int i = 2;
+        while (n != 1) {
+            if (n % i == 0) {
+                result.add(i);
+                n /= i;
+                i = 2;
+                continue;
+            }
+            i++;
+        }
+
+        return result.stream().mapToInt(x->x).distinct().toArray();
     }
 }
