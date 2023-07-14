@@ -7,29 +7,40 @@ import java.util.stream.Collectors;
 public class Solution {
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(new Solution().solution(new String[]{"2190 - -6344 = -8534", " - 5 + 66 = 61", "5 - 15 = 63", " - 3 - 0 = -3"})));
+
+        int[][] dots = {
+                {-1, -1},
+                {1, 1},
+                {1, -1},
+                {-1, 1}
+
+
+        };
+        System.out.println(new Solution().solution(dots));
     }
 
-    public String[] solution(String[] quiz) {
+    public int solution(int[][] dots) {
 
-        List<String> result = new ArrayList<>();
+        int answer = 0;
 
-        for (String s : quiz) {
-            int[] temp = Arrays.stream(s.trim()
-                                        .replace("- ", "-")
-                                        .replace("--", "+ ")
-                                        .replace("+ ", "")
-                                        .replace("= ","")
-                                        .split(" ")
-                    ).mapToInt(Integer::parseInt).toArray();
+        List<Integer> xList = new ArrayList<>();
+        List<Integer> yList = new ArrayList<>();
 
-            if (temp[0] + temp[1] == temp[2]) {
-                result.add("O");
-            } else {
-                result.add("X");
-            }
+        for (int[] dot : dots) {
+
+            xList.add(dot[0]);
+            yList.add(dot[1]);
+
         }
 
-        return result.toArray(String[]::new);
+        int maxX = xList.stream().mapToInt(x -> x).max().getAsInt();
+        int minX = xList.stream().mapToInt(x -> x).min().getAsInt();
+
+        int maxY = yList.stream().mapToInt(y -> y).max().getAsInt();
+        int minY = yList.stream().mapToInt(y -> y).min().getAsInt();
+
+        answer = (maxX - minX) * (maxY - minY);
+
+        return answer;
     }
 }
