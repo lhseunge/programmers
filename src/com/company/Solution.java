@@ -1,45 +1,32 @@
 package com.company;
 
-import java.math.BigInteger;
-import java.util.*;
-import java.util.stream.Collectors;
-
 public class Solution {
 
     public static void main(String[] args) {
-
-        int[][] dots = {
-                {-1, -1},
-                {1, 1},
-                {1, -1},
-                {-1, 1}
-
-
-        };
-        System.out.println(new Solution().solution(dots));
+        
+        System.out.println(new Solution().solution(1081));
     }
 
-    public int solution(int[][] dots) {
-
+    public int solution(int chicken) {
+        // 서비스 치킨
         int answer = 0;
 
-        List<Integer> xList = new ArrayList<>();
-        List<Integer> yList = new ArrayList<>();
+        // 치킨 1마리를 주문하면 쿠폰 한장 발행
+        int publishCoupon = chicken;
 
-        for (int[] dot : dots) {
+        while (publishCoupon >= 10) {
+            // 서비스 받은 치킨 : 발행 쿠폰 / 10
+            answer += publishCoupon / 10;
 
-            xList.add(dot[0]);
-            yList.add(dot[1]);
+            // 쿠폰 발행 후 남은 쿠폰 개수 확인
+            int remainCoupon = publishCoupon % 10;
 
+            // 쿠폰 사용 처리
+            publishCoupon /= 10;
+
+            // 남은 쿠폰 반영
+            publishCoupon += remainCoupon;
         }
-
-        int maxX = xList.stream().mapToInt(x -> x).max().getAsInt();
-        int minX = xList.stream().mapToInt(x -> x).min().getAsInt();
-
-        int maxY = yList.stream().mapToInt(y -> y).max().getAsInt();
-        int minY = yList.stream().mapToInt(y -> y).min().getAsInt();
-
-        answer = (maxX - minX) * (maxY - minY);
 
         return answer;
     }
