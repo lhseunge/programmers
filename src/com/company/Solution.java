@@ -1,33 +1,28 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Solution {
 
     public static void main(String[] args) {
 
-        int[] numlist = {
-                10000, 20, 36, 47, 40, 6, 10, 7000, 50, 10
-        };
-
-        System.out.println(Arrays.toString(new Solution().solution(numlist, 30)));
+        System.out.println(new Solution().solution("abca", "aabc"));
     }
 
-    public int[] solution(int[] numlist, int n) {
+    public int solution(String A, String B) {
 
-        int[] answer = {};
+        if (A.equals(B)) {
+            return 0;
+        }
 
-        List<Integer> numList = Arrays.stream(numlist).boxed().sorted().collect(Collectors.toList());
+        for (int i = 1; i <= A.length(); i++) {
 
-        numList.sort((o1, o2) -> Math.abs(o2 - n) - Math.abs(o1 - n));
+            A = A.split("")[A.length() - 1].concat(A).substring(0, A.length());
 
-        Collections.reverse(numList);
+            if (A.equals(B)) {
+                return i;
+            }
+        }
 
-        answer = numList.stream().mapToInt(x -> x).toArray();
+        return -1;
 
-        return answer;
     }
 }
