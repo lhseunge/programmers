@@ -1,49 +1,30 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Solution {
 
     public static void main(String[] args) {
 
-        System.out.println(new Solution().solution("x + x + 7"));
+        int[] common = {
+//                1, 2, 3, 4
+                2, 4, 8
+//                2, 4, 8
+        };
+
+        System.out.println(new Solution().solution(common));
     }
 
-    public String solution(String polynomial) {
-        String answer = "";
+    public int solution(int[] common) {
 
-        List<String> splitPolynomial = Arrays.stream(polynomial.split(" [+] ")).collect(Collectors.toList());
+        int temp1 = common[common.length - 1] - common[common.length - 2];
+        int temp2 = common[common.length - 2] - common[common.length - 3];
 
+        if (temp1 == temp2) {
 
-        int vars = splitPolynomial.stream()
-                .filter(term -> term.contains("x") && !term.equals("x"))
-                .map(term -> term.replace("x", ""))
-                .mapToInt(Integer::parseInt)
-                .sum();
+            return common[common.length - 1] + temp1;
 
-        int onlyVars = (int) splitPolynomial.stream()
-                .filter(term -> term.equals("x"))
-                .count();
+        } else {
 
-
-        int constant = splitPolynomial.stream()
-                .filter(term -> !term.contains("x"))
-                .mapToInt(Integer::parseInt)
-                .sum();
-
-        String varSum = vars + onlyVars == 1 ? "x" : (vars + onlyVars)+"x";
-
-        if (vars + onlyVars > 0 && constant > 0) {
-            answer = varSum + " + " + constant;
-        } else if (vars + onlyVars > 0) {
-            answer = varSum;
-        } else if (constant > 0) {
-            answer = "" + constant;
+            return common[common.length - 1] + (temp1 / temp2) * temp1;
         }
-
-
-        return answer;
     }
 }
