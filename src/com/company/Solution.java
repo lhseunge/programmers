@@ -1,30 +1,24 @@
 package com.company;
 
+import java.util.Arrays;
+
 public class Solution {
 
     public static void main(String[] args) {
 
-        int[] common = {
-//                1, 2, 3, 4
-                2, 4, 8
-//                2, 4, 8
-        };
-
-        System.out.println(new Solution().solution(common));
+        System.out.println(Arrays.toString(new Solution().solution(5, 15)));
     }
 
-    public int solution(int[] common) {
+    public int[] solution(int num, int total) {
+        int[] answer = new int[num];
 
-        int temp1 = common[common.length - 1] - common[common.length - 2];
-        int temp2 = common[common.length - 2] - common[common.length - 3];
+        int start = (total / num) - ((num - 1) / 2);
 
-        if (temp1 == temp2) {
-
-            return common[common.length - 1] + temp1;
-
-        } else {
-
-            return common[common.length - 1] + (temp1 / temp2) * temp1;
+        for (int i = 0; i < num; i++) {
+            answer[i] = start;
+            start++;
         }
+
+        return answer;
     }
 }
