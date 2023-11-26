@@ -1,15 +1,17 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Solution {
 
-    public int solution(int number, int n, int m) {
-        int answer = 0;
+    public static void main(String[] args) {
+        String msg = "Spring is beginning";
+        int val1 = 3;
+        String val2 = "3";
 
-        if (number % n == 0 && number % m == 0) {
-            return 1;
-        }
-
-        return answer;
+        System.out.println(msg);
+        System.out.println(val1 + 10);
+        System.out.println(val2 + "10");
     }
 
 }
